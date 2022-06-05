@@ -4,6 +4,7 @@
 
 <head>
     @include('admin.shares.top')
+    @yield('page-css')
 </head>
 <!-- END: Head-->
 
@@ -80,8 +81,8 @@
 
 </body>
 <!-- END: Body-->
+@yield('page-js')
 @include('admin.shares.bot')
-
 @yield('js')
 
 </html>

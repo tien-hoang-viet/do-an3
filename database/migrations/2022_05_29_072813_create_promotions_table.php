@@ -19,8 +19,8 @@ class CreatePromotionsTable extends Migration
             $table->string('value');
             $table->string('unit');
             $table->integer('quantity');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->format('d-m-Y');
+            $table->date('end_date')->format('d-m-Y');
             $table->timestamps();
         });
     }

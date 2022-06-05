@@ -30,8 +30,8 @@
                                 <td>{{ $promotion->start_date }}</td>
                                 <td>{{ $promotion->end_date }}</td>
                                 <td>
-                                    <a href="{{ route('promotion.show', $promotion->id) }}"
-                                        class="btn btn-outline-primary waves-effect">Detail</a>
+                                    <a href="{{ route('promotion.edit', $promotion->id) }}"
+                                        class="btn btn-info waves-effect">Edit</a>
                                     <button data-id="{{ $promotion->id }}"
                                         class="btn btn-outline-danger waves-effect delete" data-toggle="modal"
                                         data-target="#delete-promotion">Delete</button>
@@ -43,4 +43,53 @@
             </div>
         </div>
     </div>
+@endsection
+@section('modals')
+    <div class="modal fade modal-danger text-left" id="delete-promotion" tabindex="-1" aria-labelledby="myModalLabel120"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel120">Delete this promotion ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete this promotion ?
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="promotion-id-delete" name="role">
+                    <button type="submit" class="btn btn-danger waves-effect waves-float waves-light" data-dismiss="modal"
+                        id="confirm">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.delete').click(function() {
+                $('#promotion-id-delete').val($(this).data('id'));
+            });
+            $('#confirm').click(function() {
+                let route = "{{ route('promotion.delete', '') }}" + '/' + $('#promotion-id-delete').val();
+                $.ajax({
+                    url: route,
+                    type: 'DELETE',
+                    success: function(res) {
+                        if (res.status) {
+                            location.reload();
+                        }
+                    },
+                    error: function(data) {
+                        toastr.error(
+                            "Cannot delete this promotion because some payment has already use this promotion"
+                        );
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

@@ -1,6 +1,6 @@
-@extends('admin.master')
+@extends('admin.master');
 @section('title')
-    Create Promotion Code
+    Promotion:{{ $promotion->code }}
 @endsection
 @section('content')
     <div class="row">
@@ -8,32 +8,37 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h class="card-title">Create Promotion Form</h4>
+                    <h4 class="card-title">Create Form</h4>
                 </div>
                 <div class="card-body">
-                    <form class="form form-vertical" method="POST" action="{{ route('promotion.store') }}">
+                    <form class="form form-vertical" method="POST"
+                        action="{{ route('promotion.update', $promotion->id) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="code">Code</label>
                                     <input type="text" id="code" class="form-control" name="code" placeholder="Code"
-                                        required>
+                                        required value={{ $promotion->code }}>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="value">Value</label>
                                     <input type="number" id="value" class="form-control" name="value"
-                                        placeholder="5 10 15 20" max="100" required>
+                                        placeholder="5 10 15 20" max="100" required value={{ $promotion->value }}>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="unit">Unit</label>
                                     <select class="form-control" id="unit" name="unit">
-                                        <option value="%">Percent - %</option>
-                                        <option value="VND">VND</option>
+                                        <option value="%" {{ $promotion->unit == '%' ? 'selected' : '' }}>
+                                            Percent - %
+                                        </option>
+                                        <option value="VND" {{ $promotion->unit == 'VND' ? 'selected' : '' }}>
+                                            VND
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -41,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="phone-vertical">Quantity</label>
                                     <input type="number" id="phone-vertical" class="form-control" name="quantity"
-                                        placeholder="quantity" required>
+                                        placeholder="quantity" required value="{{ $promotion->quantity }}">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
@@ -58,8 +63,9 @@
                         </div>
                         <div class="col-12 form-group p-1 text-center">
                             <button type="submit"
-                                class="btn btn-primary mr-1 waves-effect waves-float waves-light">Create</button>
-                            <button type="reset" class="btn btn-outline-secondary waves-effect">Reset</button>
+                                class="btn btn-primary mr-1 waves-effect waves-float waves-light">Change</button>
+                            <a href="{{ route('promotion.index') }}"
+                                class="btn btn-danger mr-1 waves-effect waves-float waves-light"> Go Back</a>
                         </div>
                     </form>
                 </div>
@@ -72,6 +78,9 @@
     <script src="/custom/js/date-time-format.js"></script>
     <script>
         $(document).ready(function() {
+            var promotion = {!! json_encode($promotion->toArray()) !!}
+            $('#start').val(promotion.start_date);
+            $('.end').val(promotion.end_date);
             $('#start').change(function() {
                 let start = $('#start').val();
                 let end = '';
