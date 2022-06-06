@@ -32,13 +32,15 @@ Route::get('/register', function () {
 Route::post('/register', [AdminController::class, 'register'])->name('register');
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
-    Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
-    Route::get('/details/{admin}', [AdminController::class, 'show'])->name('admin.show');
-    Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
-    Route::delete('/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.delete');
-    Route::post('/update/{admin}', [AdminController::class, 'update'])->name('admin.update');
+    Route::group(['prefix' => '/manager'], function () {
+        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+        Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
+        Route::get('/details/{admin}', [AdminController::class, 'show'])->name('admin.show');
+        Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+        Route::delete('/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.delete');
+        Route::post('/update/{admin}', [AdminController::class, 'update'])->name('admin.update');
+    });
     Route::group(['prefix' => '/role'], function () {
         Route::get('/', [RoleController::class, 'index'])->name('role.index');
         Route::get('/create', [RoleController::class, 'create'])->name('role.create');

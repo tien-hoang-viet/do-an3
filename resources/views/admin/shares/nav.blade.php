@@ -50,14 +50,14 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/home*') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.home') }}">
                     <i data-feather="home"></i>
                     <span class="menu-title text-truncate" data-i18n="Home">Home</span>
                 </a>
             </li>
             @can('role-nav')
-                <li class=" nav-item">
+                <li class=" nav-item {{ request()->is('admin/role*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='at-sign'></i>
                         <span class="menu-title text-truncate">Role</span>
@@ -84,7 +84,7 @@
                 </li>
             @endcan
             @can('permission-nav')
-                <li class=" nav-item">
+                <li class=" nav-item {{ request()->is('admin/permission*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='save'></i>
                         <span class="menu-title text-truncate">Permission</span>
@@ -102,7 +102,7 @@
                 </li>
             @endcan
             @can('admin-nav')
-                <li class=" nav-item">
+                <li class=" nav-item {{ request()->is('admin/manager*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='user'></i>
                         <span class="menu-title text-truncate">Admin</span>
@@ -128,7 +128,7 @@
                 </li>
             @endcan
             @can('category-nav')
-                <li class=" nav-item">
+                <li class=" nav-item  {{ request()->is('admin/category*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='sliders'></i>
                         <span class="menu-title text-truncate">Category</span>
@@ -154,7 +154,7 @@
                 </li>
             @endcan
             @can('product-nav')
-                <li class=" nav-item">
+                <li class=" nav-item  {{ request()->is('admin/product*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='package'></i>
                         <span class="menu-title text-truncate">Product</span>
@@ -180,7 +180,7 @@
                 </li>
             @endcan
             @can('storage-nav')
-                <li class=" nav-item">
+                <li class=" nav-item  {{ request()->is('admin/storage*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='archive'></i>
                         <span class="menu-title text-truncate">Storage</span>
@@ -206,7 +206,7 @@
                 </li>
             @endcan
             @can('promotion-nav')
-                <li class=" nav-item">
+                <li class=" nav-item  {{ request()->is('admin/promotion*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='tag'></i>
                         <span class="menu-title text-truncate">Promotion</span>
@@ -232,7 +232,7 @@
                 </li>
             @endcan
             @can('customer-nav')
-                <li class=" nav-item">
+                <li class=" nav-item  {{ request()->is('admin/customer*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='users'></i>
                         <span class="menu-title text-truncate">Customer</span>
