@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\RoleController;
@@ -55,19 +56,18 @@ Route::group(['prefix' => '/admin'], function () {
     Route::group(['prefix' => '/promotion'], function () {
         Route::get('/', [PromotionController::class, 'index'])->name('promotion.index');
         Route::get('/create', [PromotionController::class, 'create'])->name('promotion.create');
-        Route::get('/details/{promotion}', [PromotionController::class, 'show'])->name('promotion.show');
         Route::post('/store', [PromotionController::class, 'store'])->name('promotion.store');
         Route::delete('/delete/{promotion}', [PromotionController::class, 'destroy'])->name('promotion.delete');
         Route::get('/edit/{promotion}', [PromotionController::class, 'edit'])->name('promotion.edit');
         Route::post('/update/{promotion}', [PromotionController::class, 'update'])->name('promotion.update');
     });
-    // Route::group(['prefix' => '/category'], function () {
-    //     Route::get('/', [CategoryController::class, 'index'])->name('category.index');
-    //     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
-    //     Route::get('/details/{category}', [CategoryController::class, 'show'])->name('category.show');
-    //     Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
-    //     Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('category.delete');
-    //     Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('category.edit');
-    //     Route::get('/update/{id}', [CategoryController::class, 'update'])->name('category.edit');
-    // });
+    Route::group(['prefix' => '/category'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('category.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::get('/details/{category}', [CategoryController::class, 'show'])->name('category.show');
+        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('category.delete');
+        Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::post('/update/{category}', [CategoryController::class, 'update'])->name('category.update');
+    });
 });

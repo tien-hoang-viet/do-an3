@@ -136,7 +136,7 @@
                     <ul class="menu-content">
                         @can('read-category')
                             <li>
-                                <a class="d-flex align-items-center" href="">
+                                <a class="d-flex align-items-center" href="{{ route('category.index') }}">
                                     <i data-feather="circle"></i>
                                     <span class="menu-item text-truncate">View</span>
                                 </a>
@@ -144,7 +144,7 @@
                         @endcan
                         @can('create-category')
                             <li>
-                                <a class="d-flex align-items-center" href="">
+                                <a class="d-flex align-items-center" href="{{ route('category.create') }}">
                                     <i data-feather="circle"></i>
                                     <span class="menu-item text-truncate">Create</span>
                                 </a>
