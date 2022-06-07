@@ -32,8 +32,8 @@ class Product extends Model
         return $this->belongsToMany(Storage::class);
     }
 
-    public function images()
+    public function image()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasOne(Image::class);
     }
 }

@@ -3,9 +3,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\RoleController;
-use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +32,8 @@ Route::get('/register', function () {
 Route::post('/register', [AdminController::class, 'register'])->name('register');
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+    Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
     Route::group(['prefix' => '/manager'], function () {
-        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
         Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
         Route::get('/details/{admin}', [AdminController::class, 'show'])->name('admin.show');
@@ -71,5 +71,14 @@ Route::group(['prefix' => '/admin'], function () {
         Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('category.delete');
         Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('category.edit');
         Route::post('/update/{category}', [CategoryController::class, 'update'])->name('category.update');
+    });
+    Route::group(['prefix' => '/product'], function () {
+        Route::get('/', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+        Route::get('/details/{product}', [ProductController::class, 'show'])->name('product.show');
+        Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+        Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('product.delete');
+        Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
+        Route::post('/update/{product}', [ProductController::class, 'update'])->name('product.update');
     });
 });

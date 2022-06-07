@@ -162,7 +162,7 @@
                     <ul class="menu-content">
                         @can('read-product')
                             <li>
-                                <a class="d-flex align-items-center" href="">
+                                <a class="d-flex align-items-center" href="{{ route('product.index') }}">
                                     <i data-feather="circle"></i>
                                     <span class="menu-item text-truncate">View</span>
                                 </a>
@@ -170,7 +170,7 @@
                         @endcan
                         @can('create-product')
                             <li>
-                                <a class="d-flex align-items-center" href="">
+                                <a class="d-flex align-items-center" href="{{ route('product.create') }}">
                                     <i data-feather="circle"></i>
                                     <span class="menu-item text-truncate">Create</span>
                                 </a>

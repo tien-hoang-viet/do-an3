@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with('category', 'image')->get();
+        return view('admin.pages.product.index', compact('products'));
     }
 
     /**
@@ -24,7 +27,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        if ($categories == null) {
+            return redirect(route('category.create'));
+        }
+        return view('admin.pages.product.create', compact('categories'));
     }
 
     /**
@@ -35,7 +42,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['price'] = str_replace('.', '', $data['price']) . 'VND';
+        $path = $data['path'];
+        $product = Product::create($data);
+        $img = Image::create(['product_id' => $product->id, 'path' => $path]);
+        toastr()->success('Create Success');
+        return redirect(route('product.index'));
     }
 
     /**
@@ -46,7 +59,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $categories = Category::all();
+        $categoryOfProduct = $product->category()->first();
+        $imageOfProduct = $product->image()->first();
+        $product->price = substr($product->price, 0, strpos($product->price, 'V'));
+        return view('admin.pages.product.detail', compact('product', 'categories', 'imageOfProduct', 'categoryOfProduct'));
     }
 
     /**
@@ -69,7 +86,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->all();
+        $product->update($data);
+        $product->save();
+        $product->image()->first()->update($data);
+        toastr()->success('Update Successful');
+        return redirect(route('product.index'));
     }
 
     /**
@@ -80,6 +102,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->image()->delete();
+        $product->delete();
+        return response()->json(['status' => true], 200);
     }
 }

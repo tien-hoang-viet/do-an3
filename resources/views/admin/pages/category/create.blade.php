@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Vertical Form</h4>
+                    <h4 class="card-title">Create Form</h4>
                 </div>
                 <div class="card-body">
                     <form class="form form-vertical" method="POST" action="{{ route('category.store') }}">
