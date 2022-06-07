@@ -106,4 +106,17 @@ class ProductController extends Controller
         $product->delete();
         return response()->json(['status' => true], 200);
     }
+    public function search(Request $request)
+    {
+        $products = Product::where('name', 'like', '%' . $request->name . '%')
+            ->orderByDesc('quantity')
+            ->take(10)
+            ->get();
+        return response()->json(['data' => $products]);
+    }
+    public function list()
+    {
+        $product = Product::all();
+        return response()->json(['data' => $product]);
+    }
 }

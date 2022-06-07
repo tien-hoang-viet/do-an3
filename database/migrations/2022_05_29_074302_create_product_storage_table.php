@@ -15,6 +15,9 @@ class CreateProductStorageTable extends Migration
     {
         Schema::create('product_storage', function (Blueprint $table) {
             $table->id();
+            $table->uuid('bill_id');
+            $table->string('import_price');
+            $table->string('quantity');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedBigInteger('storage_id');

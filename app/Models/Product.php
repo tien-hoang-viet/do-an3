@@ -27,9 +27,9 @@ class Product extends Model
         return $this->hasMany(PaymentProduct::class);
     }
 
-    public function storages()
+    public function productStorages()
     {
-        return $this->belongsToMany(Storage::class);
+        return $this->hasMany(ProductStorage::class);
     }
 
     public function image()

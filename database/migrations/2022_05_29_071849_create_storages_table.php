@@ -15,10 +15,8 @@ class CreateStoragesTable extends Migration
     {
         Schema::create('storages', function (Blueprint $table) {
             $table->id();
-            $table->uuid('bill_id');
-            $table->integer('quantity');
-            $table->string('import_price');
-            $table->string('total_price');
+            $table->string('name');
+            $table->string('address');
             $table->timestamps();
         });
     }

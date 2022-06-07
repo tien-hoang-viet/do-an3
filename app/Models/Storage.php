@@ -15,8 +15,8 @@ class Storage extends Model
         'total_price',
     ];
 
-    public function products()
+    public function productStorages()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasMany(ProductStorage::class);
     }
 }

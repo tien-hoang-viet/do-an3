@@ -81,8 +81,8 @@
 
 </body>
 <!-- END: Body-->
-@yield('page-js')
 @include('admin.shares.bot')
+@yield('page-js')
 @yield('js')
 
 </html>

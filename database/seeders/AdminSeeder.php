@@ -21,6 +21,11 @@ class AdminSeeder extends Seeder
                 ['id' => 1, 'name' => 'Admin'],
             ]
         );
+        DB::table('storages')->insert(
+            [
+                ['name' => 'Kho HCM', 'address' => '166 Nguyen Cong Tru'],
+            ]
+        );
         DB::table('admins')->insert(
             [
                 ['full_name' => 'Tien Hoang', 'email' => 'tien123@gmail.com', 'address' => '123 Main Street', 'identity_number' => '123123123', 'phone_number' => '123123123', 'password' => bcrypt(123), 'is_master' => true, 'role_id' => '1'],

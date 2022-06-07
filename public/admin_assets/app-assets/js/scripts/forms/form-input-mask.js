@@ -57,7 +57,9 @@ $(function () {
   //Numeral
   if (numeralMask.length) {
     new Cleave(numeralMask, {
-      numeral: true,
+        numeral: true,
+        numeralDecimalMark: ',',
+        delimiter: '.',
       numeralThousandsGroupStyle: 'thousand'
     });
   }

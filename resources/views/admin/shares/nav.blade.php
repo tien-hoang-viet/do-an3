@@ -183,12 +183,12 @@
                 <li class=" nav-item  {{ request()->is('admin/storage*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather='archive'></i>
-                        <span class="menu-title text-truncate">Storage</span>
+                        <span class="menu-title text-truncate">Goods</span>
                     </a>
                     <ul class="menu-content">
                         @can('read-storage')
                             <li>
-                                <a class="d-flex align-items-center" href="">
+                                <a class="d-flex align-items-center" href="{{ route('storage.index') }}">
                                     <i data-feather="circle"></i>
                                     <span class="menu-item text-truncate">View</span>
                                 </a>
@@ -196,7 +196,7 @@
                         @endcan
                         @can('create-storage')
                             <li>
-                                <a class="d-flex align-items-center" href="">
+                                <a class="d-flex align-items-center" href="{{ route('storage.create') }}">
                                     <i data-feather="circle"></i>
                                     <span class="menu-item text-truncate">Create</span>
                                 </a>
@@ -234,8 +234,8 @@
             @can('customer-nav')
                 <li class=" nav-item  {{ request()->is('admin/customer*') ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="#">
-                        <i data-feather='users'></i>
-                        <span class="menu-title text-truncate">Customer</span>
+                        <i data-feather='truck'></i>
+                        <span class="menu-title text-truncate">Order</span>
                     </a>
                     <ul class="menu-content">
                         @can('read-customer')

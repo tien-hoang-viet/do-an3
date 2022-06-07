@@ -6,6 +6,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StorageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,7 +79,17 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/details/{product}', [ProductController::class, 'show'])->name('product.show');
         Route::post('/store', [ProductController::class, 'store'])->name('product.store');
         Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('product.delete');
-        Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('/update/{product}', [ProductController::class, 'update'])->name('product.update');
+    });
+    Route::group(['prefix' => '/storage'], function () {
+        Route::get('/', [StorageController::class, 'index'])->name('storage.index');
+        Route::post('/search', [ProductController::class, 'search'])->name('storage.search');
+        Route::get('/list-products', [ProductController::class, 'list'])->name('storage.products');
+        Route::get('/create', [StorageController::class, 'create'])->name('storage.create');
+        Route::get('/details/{storage}', [StorageController::class, 'show'])->name('storage.show');
+        Route::post('/store', [StorageController::class, 'store'])->name('storage.store');
+        Route::delete('/delete/{storage}', [StorageController::class, 'destroy'])->name('storage.delete');
+        Route::get('/edit/{storage}', [StorageController::class, 'edit'])->name('storage.edit');
+        Route::post('/update/{storage}', [StorageController::class, 'update'])->name('storage.update');
     });
 });
