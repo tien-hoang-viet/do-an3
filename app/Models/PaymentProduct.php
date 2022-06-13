@@ -9,9 +9,9 @@ class PaymentProduct extends Model
 {
     use HasFactory;
 
-    protected $table = 'payment_products';
+    protected $table = 'payment_product';
     protected $fillable = [
-        'product_quantity',
+        'quantity',
         'payment_id',
         'product_id',
     ];

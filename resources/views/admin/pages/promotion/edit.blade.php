@@ -1,6 +1,6 @@
 @extends('admin.master');
 @section('title')
-    Promotion:{{ $promotion->code }}
+    Promotion : {{ $promotion->code }}
 @endsection
 @section('content')
     <div class="row">
@@ -96,7 +96,6 @@
                 $('#code').val(code.toUpperCase());
             })
             $('#value').blur(function() {
-                console.log($('#unit').val());
                 if ($('#unit').val() == '%') {
                     $('#value').attr('max', '100');
                     $('#value').attr('min', '0');

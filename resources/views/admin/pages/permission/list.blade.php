@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-    Role Table
+    Permission Table
 @endsection
 @section('content')
     <div class="row">

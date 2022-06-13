@@ -64,7 +64,7 @@
             function loadProducts() {
                 var html = '';
                 $.ajax({
-                    url: "{{ route('storage.products') }}",
+                    url: "{{ route('products') }}",
                     type: 'get',
                     success: function(res) {
                         var data = res.data;
@@ -88,16 +88,18 @@
             function loadKho(data) {
                 var html = '';
                 $.each(data, function(key, value) {
-                    html += '<tr>';
+                    html += '<tr >';
                     html += '<th scope="col">' + (key + 1) + '</th>';
                     html += '<td class="text-nowrap">' + value.name + '</td>';
                     html += '<td>';
-                    html += '<input type="text" min = "1"  requied id="quantity_' + key +
+                    html += '<input type="text"style="width:200px" min = "1"  requied id="quantity_' + key +
                         '" class="form-control numeral-mask" placeholder="Quantity">';
                     html += '<input type="hidden" id="id_' + key + '" value="' + value.id + '"';
                     html += '</td>';
                     html += '<td>';
-                    html += '<input type="text" min = "1000" requied id="import_price_' + key +
+                    html +=
+                        '<input type="text" style="width:200px" min = "1000" requied id="import_price_' +
+                        key +
                         '" class="form-control numeral-mask" placeholder="Import Price">';
                     html += '</td>';
                     html += '<td class="text-right">';
@@ -175,13 +177,12 @@
                         'name': name,
                     }
                     $.ajax({
-                        url: " {{ route('storage.search') }}",
+                        url: " {{ route('product.search') }}",
                         type: 'post',
                         data: payload,
                         success: function(res) {
                             var html = '';
                             var data = res.data;
-                            console.log(data);
                             $.each(data, function(key, value) {
                                 html += '<tr>';
                                 html += '<td>' + value.name + '</td>';
@@ -199,7 +200,6 @@
         });
     </script>
 @endsection
-
 {{-- @section('js') --}}
 {{-- <script>
         $(document).ready(function() {

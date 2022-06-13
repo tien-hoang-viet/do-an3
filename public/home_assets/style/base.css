@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Akshar', sans-serif;
+    font-family: 'Barlow', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    width: 100%;
+}
+:root {
+    --primary-color: #f8a01c;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --Nav-height: 110px;
+    --navbar-height: 40px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+}

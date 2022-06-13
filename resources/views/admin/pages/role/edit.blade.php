@@ -1,6 +1,6 @@
 @extends('admin.master');
 @section('title')
-    Role:{{ $role->name }}
+    Role : {{ $role->name }}
 @endsection
 @section('content')
     <div class="row">

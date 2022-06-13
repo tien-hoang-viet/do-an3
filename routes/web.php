@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
@@ -31,10 +34,20 @@ Route::get('/register', function () {
     return view('admin.register');
 })->name('register.index');
 Route::post('/register', [AdminController::class, 'register'])->name('register');
-Route::group(['prefix' => '/admin'], function () {
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
+Route::group(['prefix' => 'furniture'], function () {
+    Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+    Route::get('/category/{id}', [HomepageController::class, 'productOfCategory'])->name('furniture.category.detail');
+    Route::get('/category/{id}/product/{product_id}', [ProductController::class, 'productDetail'])->name('cate.product.detail');
+});
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
     Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
     Route::group(['prefix' => '/manager'], function () {
+        Route::get('/get-info', [AdminController::class, 'getInfo'])->name('admin.getInfo');
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
         Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
         Route::get('/details/{admin}', [AdminController::class, 'show'])->name('admin.show');
@@ -80,16 +93,20 @@ Route::group(['prefix' => '/admin'], function () {
         Route::post('/store', [ProductController::class, 'store'])->name('product.store');
         Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('product.delete');
         Route::post('/update/{product}', [ProductController::class, 'update'])->name('product.update');
+        Route::post('/search', [ProductController::class, 'search'])->name('product.search');
+        Route::get('/list-products', [ProductController::class, 'list'])->name('products');
     });
     Route::group(['prefix' => '/storage'], function () {
         Route::get('/', [StorageController::class, 'index'])->name('storage.index');
-        Route::post('/search', [ProductController::class, 'search'])->name('storage.search');
-        Route::get('/list-products', [ProductController::class, 'list'])->name('storage.products');
         Route::get('/create', [StorageController::class, 'create'])->name('storage.create');
-        Route::get('/details/{storage}', [StorageController::class, 'show'])->name('storage.show');
         Route::post('/store', [StorageController::class, 'store'])->name('storage.store');
-        Route::delete('/delete/{storage}', [StorageController::class, 'destroy'])->name('storage.delete');
-        Route::get('/edit/{storage}', [StorageController::class, 'edit'])->name('storage.edit');
-        Route::post('/update/{storage}', [StorageController::class, 'update'])->name('storage.update');
+    });
+    Route::group(['prefix' => '/order'], function () {
+        Route::get('/', [OrderController::class, 'index'])->name('order.index');
+        Route::get('/create', [OrderController::class, 'create'])->name('order.create');
+        Route::get('/details/{order}', [OrderController::class, 'show'])->name('order.show');
+        Route::delete('/delete/{order}', [OrderController::class, 'destroy'])->name('order.delete');
+        Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
+        Route::post('/update/{order}', [OrderController::class, 'update'])->name('order.update');
     });
 });

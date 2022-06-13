@@ -8,7 +8,7 @@
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th style="width:200px">Name</th>
                     <th>Short Description</th>
                     <th>Quantity</th>
                     <th>Category</th>

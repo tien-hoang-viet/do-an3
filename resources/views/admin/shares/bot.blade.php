@@ -34,3 +34,17 @@
         }
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            'url': "{{ route('admin.getInfo') }}",
+            'type': 'GET',
+            success: function(res) {
+                var user = res.user;
+                var role = res.role;
+                $('.user-name').text(user.full_name);
+                $('.user-status').text(role.name);
+            }
+        });
+    })
+</script>

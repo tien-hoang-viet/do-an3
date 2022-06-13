@@ -15,12 +15,12 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('total_price');
+            $table->string('total_price')->nullable();
             $table->string('type');
             $table->dateTime('date');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->unsignedBigInteger('promotion_id');
+            $table->unsignedBigInteger('promotion_id')->nullable();
             $table->foreign('promotion_id')->references('id')->on('promotions');
             $table->timestamps();
         });

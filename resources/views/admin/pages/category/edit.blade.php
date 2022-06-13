@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-    Edit {{ $category->name }}
+    Edit : {{ $category->name }}
 @endsection
 @section('content')
 @section('content')
@@ -81,7 +81,6 @@
     <script>
         $(document).ready(function() {
             var parents = {!! json_encode($parentCategories->toArray()) !!};
-            console.log(parents);
             $('#is_parent_switch').change(function() {
                 if ($(this).prop("checked") == true) {
                     $('#parent_id').html('');

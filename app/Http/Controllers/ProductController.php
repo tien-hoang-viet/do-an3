@@ -106,6 +106,7 @@ class ProductController extends Controller
         $product->delete();
         return response()->json(['status' => true], 200);
     }
+
     public function search(Request $request)
     {
         $products = Product::where('name', 'like', '%' . $request->name . '%')
@@ -114,9 +115,17 @@ class ProductController extends Controller
             ->get();
         return response()->json(['data' => $products]);
     }
+    
     public function list()
     {
         $product = Product::all();
         return response()->json(['data' => $product]);
+    }
+
+    public function productDetail($id, $product_id)
+    {
+        $product = Product::with('image', 'category')->where('id', $product_id)->where('category_id', $id)->first();
+        $product->price = substr($product->price, 0, strpos($product->price, 'V') - 2);
+        return view('client.product.detail', compact('product'));
     }
 }

@@ -148,4 +148,11 @@ class AdminController extends Controller
         Auth::logout();
         return redirect(route('login.index'));
     }
+
+    public function getInfo()
+    {
+        $user = Auth::user();
+        $role = Role::find($user->role_id);
+        return response()->json(['user' => $user, 'role' => $role], 200);
+    }
 }

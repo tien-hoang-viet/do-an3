@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionTableSeeder::class,
             AdminSeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }

@@ -17,7 +17,7 @@ class CreateProductStorageTable extends Migration
             $table->id();
             $table->uuid('bill_id');
             $table->string('import_price');
-            $table->string('quantity');
+            $table->integer('quantity');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedBigInteger('storage_id');
