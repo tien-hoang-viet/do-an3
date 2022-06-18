@@ -115,7 +115,7 @@ class ProductController extends Controller
             ->get();
         return response()->json(['data' => $products]);
     }
-    
+
     public function list()
     {
         $product = Product::all();

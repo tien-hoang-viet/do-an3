@@ -36,7 +36,7 @@ Route::get('/register', function () {
 Route::post('/register', [AdminController::class, 'register'])->name('register');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 
-Route::group(['prefix' => 'furniture'], function () {
+Route::group(['prefix' => '/furniture'], function () {
     Route::get('/', [HomepageController::class, 'index'])->name('homepage');
     Route::get('/category/{id}', [HomepageController::class, 'productOfCategory'])->name('furniture.category.detail');
     Route::get('/category/{id}/product/{product_id}', [ProductController::class, 'productDetail'])->name('cate.product.detail');

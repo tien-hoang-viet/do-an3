@@ -103,6 +103,11 @@ class AdminController extends Controller
     public function update(Request $request, Admin $admin)
     {
         $data = array_slice($request->all(), 1);
+        $adminLoged = Auth::user()->id;
+        if ($adminLoged == $admin->id) {
+            toastr()->error("You cannot update yourself");
+            return redirect(route('admin.index'));
+        }
         if (!isset($data['is_master'])) {
             $data['is_master'] = 0;
         } else {

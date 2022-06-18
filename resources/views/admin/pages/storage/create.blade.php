@@ -111,10 +111,10 @@
             }
             $('body').on('click', '.add', function() {
                 var id = $(this).data('id');
-                var ten = $(this).data('name');
+                var name = $(this).data('name');
                 var san_pham = {
                     'id': id,
-                    'name': ten,
+                    'name': name,
                 };
                 var res = listNhapKho.findIndex(x => x.id === id);
                 if (res < 0) {

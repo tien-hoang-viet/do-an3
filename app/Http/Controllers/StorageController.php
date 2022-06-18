@@ -61,8 +61,11 @@ class StorageController extends Controller
                     'import_price' => $value['import_price'],
                     'bill_id' => $bill_id,
                 ]);
-                $product->quantity += $value['quantity'];
-                $san_pham->save();
+                $quantity = $product->quantity + $value['quantity'];
+                $product->update(
+                    ['quantity' => $quantity],
+                );
+                $product->save();
             }
             return response()->json(['status' => true]);
         } else {
