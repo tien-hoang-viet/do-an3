@@ -25,7 +25,8 @@
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->category->name }}</td>
                         <td class="text-center">
-                            <img src="{{ $product->image->path }}" alt="" width="200px" style="height: 100px">
+                            <img src="{{ $product->image->path }}" alt="" width="200px" style="height: 150px"
+                                style="object-fit: cover">
                         </td>
                         <td class="text-center">
                             <a href="{{ route('product.show', $product->id) }}"
@@ -78,10 +79,8 @@
                             location.reload();
                         }
                     },
-                    error: function(data) {
-                        toastr.error(
-                            "This product is still in stock"
-                        );
+                    error: function(res) {
+                        toastr.error(res.responseJSON.msg);
                     }
                 })
             })

@@ -54,7 +54,8 @@
                             <div class="col-md-12">
                                 <label for="">Description</label>
                                 <div class="form-group">
-                                    <textarea name="description" class="form-control" id="des" rows="3" cols="40" placeholder="Description">
+                                    <textarea name="description" class="form-control" id="des" rows="3" cols="40"
+                                        placeholder="Description">
 
                                     </textarea>
                                 </div>
@@ -103,7 +104,7 @@
     <script src="/admin_assets/ckeditor/ckeditor.js"></script>
     <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
     <script>
-        var description = " {!! $product->description !!}";
+        var description = {!! json_encode($product->description) !!};
         CKEDITOR.replace('des');
         CKEDITOR.instances['des'].setData(description);
     </script>
@@ -128,7 +129,7 @@
                 return x.replaceAll('.', '');
             }
 
-            var price = {!! $product->price !!};
+            var price = {!! json_encode($product->price) !!};
             $('#price').val(convertCurrency(price));
 
             $('#price').change(function() {

@@ -87,6 +87,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $data = $request->all();
+        $data['price'] = str_replace('.', '', $data['price']) . 'VND';
         $product->update($data);
         $product->save();
         $product->image()->first()->update($data);
@@ -102,9 +103,19 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->image()->delete();
-        $product->delete();
-        return response()->json(['status' => true], 200);
+        if ($product->quantity > 0) {
+            return response()->json(['status' => true, 'msg' => "This product is still in stock"], 400);
+        }
+        \DB::beginTransaction();
+        try {
+            $product->image()->delete();
+            $product->delete();
+            \DB::commit();
+            return response()->json(['status' => true], 200);
+        } catch (\Exception $e) {
+            \DB::rollback();
+            return response()->json(['status' => true, 'msg' => "This product cannot be deleted because it is already be bought"], 400);
+        }
     }
 
     public function search(Request $request)
