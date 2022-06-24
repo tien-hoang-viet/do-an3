@@ -24,7 +24,7 @@
         <img src="/home_assets/style/img/logo.png" alt="" class="Nav_logo">
         <ul class="Nav_List">
             <li class="Nav_item">
-                <a href="" class="Nav_item-link">Trang chủ</a>
+                <a href="{{ route('homepage') }}" class="Nav_item-link">Trang chủ</a>
             </li>
             <li class="Nav_item">
                 <a href="" class="Nav_item-link">Sản Phẩm</a>
