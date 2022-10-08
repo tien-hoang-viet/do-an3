@@ -42,6 +42,7 @@ Route::group(['prefix' => '/furniture'], function () {
     Route::get('/category/{id}/product/{product_id}', [ProductController::class, 'productDetail'])->name('cate.product.detail');
 });
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/about-us', [HomepageController::class, 'aboutUs'])->name('home.about');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');

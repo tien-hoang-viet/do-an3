@@ -122,6 +122,73 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="footer">
+            <h1>
+                LXC Architects ®
+            </h1>
+            <div class="footer-box">
+
+                <div class="footer-box1">
+                    <h2>Trụ sở chính
+                    </h2>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        373/226 Lý Thường Kiệt, Phường 8, Quận Tân Bình, Tp.HCM</a>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        1900 636 648
+                    </a>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        lexuanchau@dtu.edu.vn
+                    </a>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-brands fa-skype"></i>
+                        lexuanchau
+                    </a>
+                </div>
+                <div class="footer-box1">
+                    <h2>Chi nhánh Hà Nội
+                    </h2>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        373/226 Lý Thường Kiệt, Phường 8, Quận Tân Bình, Tp.HCM</a>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        1900 636 648
+                    </a>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        lexuanchau@dtu.edu.vn
+                    </a>
+                    <a href="" class="footer-box--link">
+                        <i class="fa-brands fa-skype"></i>
+                        lexuanchau
+                    </a>
+                </div>
+                <div class="footer-box1">
+                    <h2>Chi nhánh Hà Nội
+                    </h2>
+                    <p>
+                        Nhập email của bạn và chúng tôi sẽ cập nhật cho bạn tin tức và cập nhật!
+                    </p>
+                    <input type="text" class="footer-box1-input" size="40" placeholder="Nhập họ và tên">
+                    <input type="text" class="footer-box1-input" size="40" placeholder="Email">
+                </div>
+            </div>
+            <button>
+                GỬI
+            </button>
+        </div>
+
+        <div class="footer2">
+            © Bản quyền thuộc về . Thiết kế
+            <i class="fa-solid fa-compass-drafting"></i>
+            Lê Xuân Châu
+        </div>
+
+    </footer>
 </body>
 
 @yield('js')
