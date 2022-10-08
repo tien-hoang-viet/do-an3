@@ -105,6 +105,8 @@ class ProductController extends Controller
     {
         if ($product->quantity > 0) {
             return response()->json(['status' => true, 'msg' => "This product is still in stock"], 400);
+        } elseif (!empty($product->paymentProducts())) {
+            return response()->json(['status' => true, 'msg' => "This product has been sold cannot delete"], 400);
         }
         \DB::beginTransaction();
         try {

@@ -57,29 +57,63 @@
             </li>
         </ul>
     </div>
-    <div class="product">
-        <div class="product">
-            <div class="about_title">
-                <h2>SẢN PHẨM</h2>
-                <h3>TRANG CHỦ / SẢN PHẨM</h3>
-            </div>
-            <div class="grid wide">
-                <div class="category">
-                    <p>Danh Mục :</p>
-                    <ul class="category-list" style="margin-top:40px">
-                        @foreach ($categories as $category)
-                            <li class="category-item">
-                                <a href="{{ route('furniture.category.detail', $category->id) }}" class="category-link">
-                                    {{ $category->name }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+    <div class="about">
+        <div class="about_title">
+            <h2>GIỚI THIỆU</h2>
+            <h3>TRANG CHỦ / GIỚI THIỆU</h3>
+        </div>
+        <div class="about_info">
+            <h2>
+                Công ty thiết kế nội thất văn phòng MONA-architects
+            </h2>
+            <div class="box">
+                <h3>
+                    QUÁ TRÌNH HÌNH THÀNH VÀ PHÁT TRIỂN
+                </h3>
+                <div class="box_content">
+                    <img src="./style/img/about1.jpg" alt="">
+                    <div class="box_content-p">
+                        <p>Năm 2006, MONA-architects được thành lập với sự sáng lập của 2 thành viên. Và văn phòng đầu
+                            tiên của công ty được xây dựng tại TP. Hồ Chí Minh trong một khuôn viên nhỏ chỉ 10m2, bắt
+                            đầu bằng thông điệp “Tất cả được tạo nên từ những điều cơ bản nhất”.</p>
+                        <p>Ý tưởng đầu tiên của sáng lập viên là xây dựng một công ty thiết kế nội thất văn phòng tại
+                            Việt Nam có sự tập trung chuyên sâu vào lĩnh vực thiết kế thi công nội thất văn phòng – nơi
+                            đem đến cho khách hàng những trải nghiệm tuyệt vời về dịch vụ với một văn phòng sáng tạo
+                            trong mức ngân sách hợp lý.</p>
+                        <p>Với hơn 10 năm phát triển, MONA-architects trở thành đơn vị hàng đầu trong dịch vụ thiết kế
+                            văn phòng tại Việt Nam thông qua việc nắm bắt được xu hướng của những mô hình văn phòng mới
+                            trên thế giới. Thiết kế nội thất văn phòng của MONA-architects không chỉ đẹp, mà còn hỗ trợ
+                            khách hàng trong việc gia tăng năng suất & hiệu quả của doanh nghiệp bằng cách phản ánh
+                            chiến lược, văn hoá & đặc trưng kinh doanh của công ty trong thiết kế của mình.</p>
+                        <p>Tính đến thời điểm hiện tại, MONA-architects đã kiến tạo hơn 600 văn phòng cho những tập đoàn
+                            danh tiếng tại Việt Nam & hơn 90% khách hàng của MONA-architects là những công ty đa quốc
+                            gia hàng đầu – họ là những doanh nghiệp luôn tìm kiếm một dịch vụ chuyên nghiệp với những ý
+                            tưởng độc đáo & mới lạ.</p>
+                    </div>
                 </div>
             </div>
-            <div class="grid wide">
-                <div class="row product-row">
-                    @yield('content')
+            <div class="box">
+                <h3>
+                    ĐỊNH HƯỚNG THIẾT KẾ THI CÔNG NỘI THẤT VĂN PHÒNG
+                </h3>
+                <div class="box_content">
+                    <div class="box_content-p">
+                        <p>Thông qua việc hiểu rõ những kỳ vọng trong kinh doanh của cấp điều hành, tìm tòi sự khác biệt
+                            trong văn hoá và đặc trưng ngành nghề cũng như vị thế của từng khách hàng, không ngừng
+                            nghiên cứu về những xu hướng văn phòng hiện đại và áp dụng những công nghệ mới trong không
+                            gian làm việc, đưa ra những giải pháp tốt nhất giải quyết các vấn đề của khách hàng. </p>
+                        <p>Tạo ra trải nghiệm làm việc mà khách hàng yêu thích thông qua sự chu đáo và tư vấn tận tình
+                            cho nhu cầu của khách hàng là những gì MONA-architects hướng tới; từ đó giúp mang lại những
+                            giá trị và lợi ích tối ưu, nâng cao thành quả và tiết kiệm thời gian cho khách hàng. </p>
+                        <p>MONA-architects đã giúp cho rất nhiều khách hàng tạo ra một không gian làm việc mới góp phần
+                            nâng cao sự hài lòng của nhân viên, gia tăng hiệu quả công việc, thể hiện rõ hơn vị thế của
+                            công ty cũng như hỗ trợ về chiến lược và mục tiêu kinh doanh của từng khách hàng. </p>
+                        <p>MONA-architects đang không ngừng sáng tạo những ý tưởng, giải pháp thiết kế mới, không bị
+                            giới hạn và gò bó bởi những tư duy đã có hay tiêu chuẩn được thiết lập sẵn có và để từ đó,
+                            tự hào trở thành công ty hàng đầu về dịch vụ thiết kế không gian làm việc cho doanh nghiệp
+                            tại Việt Nam.</p>
+                    </div>
+                    <img src="./style/img/about2.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -143,40 +177,10 @@
                 GỬI
             </button>
         </div>
-
         <div class="footer2">
             © Bản quyền thuộc về . Thiết kế
             <i class="fa-solid fa-compass-drafting"></i>
             Lê Xuân Châu
         </div>
-
     </footer>
 </body>
-
-@yield('js')
-@jquery
-@toastr_js
-@toastr_render
-<script>
-    $(document).ready(function() {
-        var cart = [];
-        if (JSON.parse(localStorage.getItem('cart')) == null) {
-            localStorage.cart = JSON.stringify(cart);
-        } else {
-            cart = JSON.parse(localStorage.cart);
-        }
-        var myquantity = 0;
-        if (cart.length != 0) {
-            $.each(cart, function(k, v) {
-                myquantity += v.quantity;
-            });
-            var html = ` <span class="fa-stack fa-1x has-badge" data-count="` + myquantity + `" id="cart-num">
-                        <i class="fa fa-stack-1x"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                    </span>`;
-            $('#cart-items').html(html);
-        }
-    })
-</script>
-
-</html>

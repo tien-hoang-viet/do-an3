@@ -27,4 +27,9 @@ class HomepageController extends Controller
         }
         return view('client.product.index', compact('products', 'categories'));
     }
+
+    public function aboutUs()
+    {
+        return view('client.about.about');
+    }
 }
