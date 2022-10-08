@@ -20,7 +20,6 @@ class Admin extends Authenticatable
         'is_master',
         'password',
         'role_id',
-        'ádasdsad',
     ];
 
     public function role()
