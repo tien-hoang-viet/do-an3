@@ -11,7 +11,7 @@ class HomepageController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $products = Product::with('image')->orderBy('quantity', 'DESC')->get();
+        $products = Product::with('image')->where('quantity', '>', 0)->orderBy('quantity', 'DESC')->get();
         foreach ($products as $key => $product) {
             $products[$key]->price = substr($product->price, 0, strpos($product->price, 'V') - 2);
         }
@@ -20,7 +20,7 @@ class HomepageController extends Controller
     public function productOfCategory($id)
     {
         $categories = Category::all();
-        $products = Product::with('image')->where('category_id', $id)->orderBy('quantity', 'DESC')->get();
+        $products = Product::with('image')->where('category_id', $id)->where('quantity', '>', 0)->orderBy('quantity', 'DESC')->get();
 
         foreach ($products as $key => $product) {
             $products[$key]->price = substr($product->price, 0, strpos($product->price, 'V') - 2);
