@@ -52,10 +52,9 @@ class CustomerController extends Controller
         unset($data['_token']);
         $customer = Auth::guard('customers')->attempt($data);
         if ($customer) {
-            return redirect('/furniture');
+            return response()->json(['status' => true], 200);
         } else {
-            toastr()->error('login failed');
-            return redirect()->back();
+            return response()->json(['status' => false, 'message' => 'Email or password was wrong'], 400);
         }
     }
     /**

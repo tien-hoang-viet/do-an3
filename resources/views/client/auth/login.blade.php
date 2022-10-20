@@ -13,6 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @toastr_css
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .gradient-custom {
             /* fallback for old browsers */
@@ -37,7 +39,6 @@
                         <div class="card-body p-5 text-center">
 
                             <form class="mb-md-5 mt-md-4 pb-5" method="POST" action="{{ route('login') }}">
-                                @csrf
                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
@@ -53,10 +54,8 @@
                                     <label class="form-label" for="typePasswordX">Password</label>
                                 </div>
 
-                                {{-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot
-                                        password?</a></p> --}}
-
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <button class="btn btn-outline-light btn-lg px-5" type="button"
+                                    id="login">Login</button>
 
                                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
                                     <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
@@ -83,9 +82,31 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
 </script>
+@jquery
+@toastr_js
+@toastr_render
 <script>
     $(document).ready(function() {
-
+        $('#login').click(function() {
+            const email = $('#typeEmailX').val();
+            const password = $('#typePasswordX').val();
+            let payload = {
+                'email': email,
+                'password': password,
+                '_token': "{{ csrf_token() }}",
+            }
+            $.ajax({
+                url: "{{ route('login') }}",
+                type: 'POST',
+                data: payload,
+                success: function(data) {
+                    window.location.href = "{{ route('homepage') }}";
+                },
+                error: function(data) {
+                    toastr.error(data.responseJSON.message);
+                }
+            })
+        })
     })
 </script>
 
