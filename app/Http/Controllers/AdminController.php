@@ -71,8 +71,8 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        $roleOfAdmin = $admin->role()->first();
-        $permissionsOfRole = $roleOfAdmin->permissions()->pluck('permissions.id')->toArray();
+        $roleOfAdmin = $admin->role()->with('permissions')->first();
+        $permissionsOfRole = $roleOfAdmin->permissions->pluck('id')->toArray();
         $permissions = Permission::all();
         $permissionGroups = $permissions->groupBy(function ($item, $key) {
             return $item['group'];

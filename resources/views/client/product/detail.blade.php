@@ -55,7 +55,6 @@
             </li>
             <li class="Nav_item">
                 <a href="{{ route('cart.index') }}" class="Nav_item-link" id="cart-items">
-
                 </a>
             </li>
         </ul>
