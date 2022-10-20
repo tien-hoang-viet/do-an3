@@ -42,7 +42,7 @@
                 <a href="/cart" class="Nav_item-link">Giỏ hàng </a>
             </li>
             <li class="Nav_item">
-                <a href="" class="Nav_item-link Nav_item-link--share">Liên hệ</a>
+                <a href="" class="Nav_item-link Nav_item-link--share">Chia sẻ</a>
                 <div class="Nav_item-share">
                     <img class="qr-share" src="/home_assets/style/img/qr.png" alt="">
                     <div class="img-mobile">

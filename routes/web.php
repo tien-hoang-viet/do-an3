@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StorageController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,14 +27,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register', [CustomerController::class, 'register'])->name('register.index');
+Route::get('/login', function () {
+    return view('client.auth.login');
+})->name('login');
+Route::post('/register', [CustomerController::class, 'store'])->name('register.store');
+Route::post('/login', [CustomerController::class, 'login'])->name('login');
 Route::get('/admin/login', function () {
     return view('admin.login');
 })->name('login.index');
-Route::post('/admin/login', [AdminController::class, 'login'])->name('login');
-Route::get('/register', function () {
-    return view('admin.register');
-})->name('register.index');
-Route::post('/register', [AdminController::class, 'register'])->name('register');
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/register', [AdminController::class, 'register'])->name('register');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 
 Route::group(['prefix' => '/furniture'], function () {

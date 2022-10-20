@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -16,7 +18,10 @@ class CustomerController extends Controller
     {
         //
     }
-
+    public function register()
+    {
+        return view('client.auth.register');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -35,9 +40,24 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        Customer::create($data);
+        return redirect(route('login'));
     }
 
+    public function login(Request $request)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        $customer = Auth::guard('customers')->attempt($data);
+        if ($customer) {
+            return redirect('/furniture');
+        } else {
+            toastr()->error('login failed');
+            return redirect()->back();
+        }
+    }
     /**
      * Display the specified resource.
      *

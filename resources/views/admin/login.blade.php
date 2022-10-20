@@ -87,7 +87,8 @@
                                             <polygon id="Path-21" fill="#000000" opacity="0.099999994"
                                                 points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338">
                                             </polygon>
-                                            <polygon id="Path-3" fill="url(#linearGradient-2)" opacity="0.099999994"
+                                            <polygon id="Path-3" fill="url(#linearGradient-2)"
+                                                opacity="0.099999994"
                                                 points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288">
                                             </polygon>
                                         </g>
@@ -109,13 +110,14 @@
                             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                 <h2 class="card-title font-weight-bold mb-1">Welcome to Vuexy! 👋</h2>
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
-                                <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">
+                                <form class="auth-login-form mt-2" action="{{ route('admin.login') }}"
+                                    method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label class="form-label" for="login-email">Email</label>
                                         <input class="form-control" id="login-email" type="text" name="email"
-                                            placeholder="john@example.com" aria-describedby="login-email" autofocus=""
-                                            tabindex="1" />
+                                            placeholder="john@example.com" aria-describedby="login-email"
+                                            autofocus="" tabindex="1" />
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex justify-content-between">
